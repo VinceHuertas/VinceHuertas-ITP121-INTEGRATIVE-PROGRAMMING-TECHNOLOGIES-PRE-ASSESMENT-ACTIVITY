@@ -1,0 +1,118 @@
+package computerinventorysys;
+
+/**
+ *
+ * @author Boinz
+ */
+
+// VINCE LUIGI R. HUERTAS || BSIT-2B
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Main {
+
+    static ArrayList <Peripheral> Peripherals= new ArrayList<>();
+    static ArrayList <Assigned>  EmployeeAssigned = new ArrayList<>();
+    
+    static  Scanner sc = new Scanner(System.in);
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        menu();
+
+    }
+  
+    
+    private static void menu() {
+        System.out.println("====== DORSU COMPUTER HARDWARE INVENTORY SYSTEM ======");
+        System.out.println("1.Add Peripheral");
+        System.out.println("2.Add Peripheral to Employee");
+        System.out.println("3.View all peripherals");
+        System.out.println("4.Show Report");
+        System.out.println("0.Exit");
+                   
+        
+        
+        System.out.print("Enter Choice:");
+        
+        int userInput = Integer.parseInt(sc.nextLine());
+
+        switch (userInput) {
+            case 1 -> {
+                AddPeripheral();
+            }
+            case 2 -> {
+                AddPeripheraltoEmployee();
+            }
+            case 3-> {
+                Viewallperipherals();
+            }
+            case 4-> {
+               ShowReport();
+           }
+            case 5-> 
+            {
+                System.exit(0);
+             
+            }
+            default -> {
+               System.out.println("Goodbye!");
+            }
+        }
+
+    }
+    
+    private static void  AddPeripheral(){
+        System.out.println("Enter Item Code:");
+        int Code = Integer.parseInt(sc.nextLine());
+        System.out.println("Enter Item Name:");
+        String Name = sc.nextLine();
+        System.out.println("PERIPHERAL:");
+        String Peripheral = sc.nextLine();
+        
+        System.out.println("PERIPHERAL ADDED!");
+        
+        Peripherals.add(new Peripheral(Code,Name,Peripheral));
+       
+        menu();
+        
+    }
+    private static void  AddPeripheraltoEmployee(){
+        System.out.println("Enter Employee Name:");
+        String EmpName = sc.nextLine();
+        System.out.println("Enter Institute:");
+        String Institute = sc.nextLine();
+        System.out.println("Enter Program:");
+        String Program = sc.nextLine();
+        System.out.println("Enter Item Code:");
+        int Code = Integer.parseInt(sc.nextLine());
+        System.out.println("Enter Item Name:");
+        String Name = sc.nextLine();
+        System.out.println("PERIPHERAL:");
+        String Peripheral = sc.nextLine();
+      
+        System.out.println("PERIPHERAL SUCCESSFULLY ASSIGNED!");
+       
+        EmployeeAssigned.add(new Assigned(EmpName,Institute,Program,Code,Name,Peripheral));
+
+        menu();
+        
+    }
+    
+    private static void Viewallperipherals(){
+        System.out.println(Peripherals);
+        
+        menu();
+    }
+    
+    
+    private static void ShowReport(){
+        System.out.println(EmployeeAssigned);
+        
+        menu();
+        
+    }
